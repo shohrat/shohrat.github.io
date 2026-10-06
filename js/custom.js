@@ -43,8 +43,8 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  const puzzle = document.querySelector("#home-puzzle");
-  if (puzzle) initPuzzle(puzzle);
+  const studio = document.querySelector("#studio");
+  if (studio) initStudio(studio);
 
   const copyBtn = document.querySelector("[data-copy]");
   if (copyBtn) {
@@ -82,126 +82,34 @@
   }
 })();
 
-function initPuzzle(root) {
-  const status = root.querySelector("#puzzle-status");
-  const reset = root.querySelector("#puzzle-reset");
-  const homesWrap = root.querySelector("[data-homes]");
-  const animals = Array.prototype.slice.call(root.querySelectorAll("[data-role='animal']"));
-  let selected = null;
+function initStudio(root) {
+  const tabs = Array.prototype.slice.call(root.querySelectorAll("[data-panel]"));
+  const panels = Array.prototype.slice.call(root.querySelectorAll("[data-panel-body]"));
 
-  function setStatus(text) {
-    status.textContent = text;
-  }
-
-  function remaining() {
-    return animals.filter(function (el) {
-      return !el.classList.contains("is-matched");
-    }).length;
-  }
-
-  function clearSelection() {
-    selected = null;
-    animals.forEach(function (el) {
-      el.classList.remove("is-selected");
-      if (!el.classList.contains("is-matched")) {
-        el.setAttribute("aria-pressed", "false");
-      }
+  function show(id) {
+    tabs.forEach(function (tab) {
+      const on = tab.getAttribute("data-panel") === id;
+      tab.classList.toggle("is-selected", on);
+      tab.setAttribute("aria-selected", String(on));
+      tab.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(function (panel) {
+      panel.hidden = panel.getAttribute("data-panel-body") !== id;
     });
   }
 
-  function shuffleHomes() {
-    const homes = Array.prototype.slice.call(homesWrap.querySelectorAll("[data-role='home']"));
-    for (let i = homes.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const swap = homes[i];
-      homes[i] = homes[j];
-      homes[j] = swap;
-    }
-    homes.forEach(function (el) {
-      homesWrap.appendChild(el);
+  tabs.forEach(function (tab, index) {
+    tab.tabIndex = index === 0 ? 0 : -1;
+    tab.addEventListener("click", function () {
+      show(tab.getAttribute("data-panel"));
     });
-  }
-
-  animals.forEach(function (animal) {
-    animal.addEventListener("click", function () {
-      if (animal.classList.contains("is-matched")) return;
-      if (animal.classList.contains("is-selected")) {
-        clearSelection();
-        setStatus("Выберите животное, затем его дом.");
-        return;
-      }
-      clearSelection();
-      animal.classList.add("is-selected");
-      animal.setAttribute("aria-pressed", "true");
-      selected = animal.getAttribute("data-pair");
-      setStatus("Теперь нажмите на дом.");
+    tab.addEventListener("keydown", function (event) {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const next = tabs[(index + direction + tabs.length) % tabs.length];
+      next.focus();
+      show(next.getAttribute("data-panel"));
     });
   });
-
-  homesWrap.addEventListener("click", function (event) {
-    const home = event.target.closest("[data-role='home']");
-    if (!home || home.classList.contains("is-matched")) return;
-
-    if (!selected) {
-      setStatus("Сначала выберите животное.");
-      return;
-    }
-
-    const animal = animals.find(function (el) {
-      return el.classList.contains("is-selected");
-    });
-
-    if (home.getAttribute("data-pair") === selected) {
-      home.classList.add("is-matched");
-      home.disabled = true;
-      const state = home.querySelector(".token-state");
-      if (state) state.textContent = "Занято";
-      if (animal) {
-        animal.classList.remove("is-selected");
-        animal.classList.add("is-matched");
-        animal.disabled = true;
-        animal.setAttribute("aria-pressed", "false");
-        const animalState = animal.querySelector(".token-state");
-        if (animalState) animalState.textContent = "Дом найден";
-      }
-      selected = null;
-      if (remaining() === 0) {
-        setStatus("Все животные дома.");
-        reset.hidden = false;
-      } else {
-        setStatus("Верно. Найдите дом для остальных.");
-      }
-      return;
-    }
-
-    home.classList.remove("is-wrong");
-    void home.offsetWidth;
-    home.classList.add("is-wrong");
-    window.setTimeout(function () {
-      home.classList.remove("is-wrong");
-    }, 450);
-    setStatus("Этот дом принадлежит другому. Попробуйте снова.");
-  });
-
-  reset.addEventListener("click", function () {
-    animals.forEach(function (el) {
-      el.classList.remove("is-selected", "is-matched");
-      el.disabled = false;
-      el.setAttribute("aria-pressed", "false");
-      const state = el.querySelector(".token-state");
-      if (state) state.textContent = "";
-    });
-    homesWrap.querySelectorAll("[data-role='home']").forEach(function (el) {
-      el.classList.remove("is-matched", "is-wrong");
-      el.disabled = false;
-      const state = el.querySelector(".token-state");
-      if (state) state.textContent = "";
-    });
-    clearSelection();
-    shuffleHomes();
-    reset.hidden = true;
-    setStatus("Выберите животное, затем его дом.");
-  });
-
-  shuffleHomes();
 }

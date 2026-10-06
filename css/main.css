@@ -277,6 +277,104 @@ input {
   background: rgba(31, 67, 52, 0.06);
 }
 
+.studio,
+.note-card,
+.policy-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.studio {
+  padding: 22px 22px 26px;
+}
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.switch {
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.switch.is-selected {
+  background: var(--moss);
+  border-color: var(--moss);
+  color: #f6f1e8;
+}
+
+.studio-panel h2 {
+  margin: 0 0 8px;
+  font-size: 1.9rem;
+}
+
+.studio-panel p,
+.note-card p,
+.project-card p {
+  color: var(--ink-soft);
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+}
+
+.project-card,
+.note-card {
+  border-radius: 28px;
+  padding: 28px;
+  min-height: 240px;
+}
+
+.project-card {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(240, 180, 41, 0.28), transparent 36%),
+    var(--moss);
+  color: #f6f1e8;
+}
+
+.project-card .eyebrow {
+  color: var(--honey);
+}
+
+.project-card h3,
+.note-card h3 {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.project-card p {
+  color: rgba(246, 241, 232, 0.86);
+  max-width: 36rem;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--honey);
+  font-weight: 600;
+}
+
+.note-card {
+  box-shadow: none;
+}
+
+.note-card .eyebrow {
+  color: var(--moss);
+}
+
 .board {
   background: var(--card);
   border: 1px solid var(--line);
@@ -751,6 +849,7 @@ tr:last-child td {
   .game-card,
   .about-panel,
   .contact-grid,
+  .project-list,
   .policy-layout {
     grid-template-columns: 1fr;
   }
