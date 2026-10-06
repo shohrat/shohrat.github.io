@@ -6,4 +6,4 @@ The English privacy policy applies only to **Animal Homes Puzzle** and states th
 
 Use this address in the Google Play Console Privacy policy field:
 
-https://shohrat.github.io/privacy-policy.html
+https://shohrat.github.io/animal-homes-puzzle-policy.html
