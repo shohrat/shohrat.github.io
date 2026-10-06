@@ -62,13 +62,13 @@
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(value).then(function () {
-          done("Скопировано");
+          done("Copied");
         }).catch(function () {
           if (input) {
             input.focus();
             input.select();
           }
-          done("Выделите ссылку");
+          done("Select the link");
         });
         return;
       }
@@ -77,7 +77,7 @@
         input.focus();
         input.select();
       }
-      done("Выделите ссылку");
+      done("Select the link");
     });
   }
 })();
