@@ -1,85 +1,278 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Cats</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="css/main.css"> <!-- Подключаем CSS -->
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/custom.js"></script><!-- Подключаем JS -->    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shohrat — игры и приложения</title>
+  <meta name="description" content="Shohrat разрабатывает мобильные игры и приложения. Animal Homes Puzzle — головоломка, в которой животные ищут свой дом.">
+  <meta name="theme-color" content="#f6f1e8">
+  <link rel="canonical" href="https://shohrat.github.io/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Shohrat — игры и приложения">
+  <meta property="og:description" content="Мобильные игры и приложения. Animal Homes Puzzle готовится к публикации в Google Play.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shohrat.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,560&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">К содержанию</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#top">
+        <svg viewBox="0 0 36 36" aria-hidden="true">
+          <rect width="36" height="36" rx="10" fill="#1f4334"/>
+          <path d="M8 18.2 18 9l10 9.2V28H8Z" fill="#f6f1e8"/>
+          <rect x="16" y="20" width="4" height="8" fill="#1f4334"/>
+        </svg>
+        <span class="logo-word">Shohrat</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Меню" data-label-open="Закрыть меню" data-label-closed="Меню">
+        <span aria-hidden="true"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Разделы">
+        <a href="#game">Игра</a>
+        <a href="#work">Разработка</a>
+        <a href="#about">Обо мне</a>
+        <a href="#contact">Контакт</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
 
-<div id="wrapper">
-
-<div class="main-container">
-
-<h1 class="main-title">Ты сегодня покормил кота?</h1>
-<ul class="menu">
-
-<li>
-        <div class="in-block">
-        <h4>Сказочное заморское яство</h4>
-        <h1>Нямушка</h1>
-        <h2>с фуагра</h2>
-        <p>
-           <span>10 порций </span>
-           <span>мышь в подарок</span>
-        </p>
-        </div>
-        <div class="product-weight blue">
-        <div>0,5</div>
-        <span>кг</span>
-        </div>
-
-        <div class="cat"></div>
-        <div class="bottom-txt">Чего сидишь? Порадуй котэ, <a href="#" class="buy-link">купи.</a></div>
-</li>
-
-<li>
-        <div class="in-block">
-        <h4>Сказочное заморское яство</h4>
-        <h1>Нямушка</h1>
-        <h2>с рыбой</h2>
-        <p>
-           <span>20 порций </span>
-           <span>2 мыши в подарок</span>
-        </p>
-        </div>
-
-        <div class="product-weight blue">
-        <div>2</div>
-        <span>кг</span>
-        </div>
-
-        <div class="cat"></div>
-        <div class="bottom-txt">Головы щучьи с чесноком да свежайшая сёмгушка.</div>
-</li>
-
-<li class="disabled">
-        <div class="in-block">
-        <h4>Сказочное заморское яство</h4>
-        <h1>Нямушка</h1>
-        <h2>с курой</h2>
-        <p>
-           <span>100 порций </span>
-           <span>5 мышей в подарок</span>
-           <span>заказчик доволен</span>
-        </p>
+  <main id="content">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Разработчик игр и приложений</p>
+          <h1>Игры и приложения, которые хочется <em>доиграть</em></h1>
+          <p class="lede">Меня зовут Shohrat. Я делаю мобильные игры и небольшие приложения для Android: понятные правила, спокойный темп и страница, которую можно указать в Google Play.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#game">Animal Homes Puzzle</a>
+            <a class="button button-ghost" href="#contact">Написать</a>
+          </div>
         </div>
 
-        <div class="product-weight blue">
-        <div>5</div>
-        <span>кг</span>
+        <div class="board" id="home-puzzle">
+          <p class="eyebrow">Мини-игра</p>
+          <h2>Найдите дом</h2>
+          <p class="board-status" id="puzzle-status" role="status">Выберите животное, затем его дом.</p>
+          <div class="board-columns">
+            <div>
+              <p class="column-label">Животные</p>
+              <div class="token-list">
+                <button type="button" class="token" data-role="animal" data-pair="fox" aria-pressed="false">
+                  <span class="token-art">
+                    <svg viewBox="0 0 80 80" aria-hidden="true">
+                      <circle cx="40" cy="48" r="20" fill="#e07a3d"/>
+                      <path d="M24 38 30 16l12 16Z" fill="#e07a3d"/>
+                      <path d="M56 38 50 16 38 32Z" fill="#e07a3d"/>
+                      <path d="M27 34 31 20l8 12Z" fill="#f6d2b5"/>
+                      <path d="M53 34 49 20l-8 12Z" fill="#f6d2b5"/>
+                      <ellipse cx="40" cy="54" rx="11" ry="9" fill="#f8e6d8"/>
+                      <circle cx="33" cy="46" r="2.2" fill="#241c16"/>
+                      <circle cx="47" cy="46" r="2.2" fill="#241c16"/>
+                      <path d="M40 50.5 37 55h6Z" fill="#241c16"/>
+                    </svg>
+                  </span>
+                  <span class="token-copy"><span class="token-label">Лиса</span><span class="token-state"></span></span>
+                </button>
+                <button type="button" class="token" data-role="animal" data-pair="bird" aria-pressed="false">
+                  <span class="token-art">
+                    <svg viewBox="0 0 80 80" aria-hidden="true">
+                      <ellipse cx="36" cy="48" rx="18" ry="15" fill="#3d8ea6"/>
+                      <circle cx="52" cy="36" r="12" fill="#3d8ea6"/>
+                      <path d="M62 36h12l-6 5Z" fill="#f0b429"/>
+                      <circle cx="56" cy="34" r="2" fill="#241c16"/>
+                      <path d="M24 46c-10 1-16 8-18 14 8-1 14-4 18-8Z" fill="#2c7390"/>
+                    </svg>
+                  </span>
+                  <span class="token-copy"><span class="token-label">Птица</span><span class="token-state"></span></span>
+                </button>
+                <button type="button" class="token" data-role="animal" data-pair="frog" aria-pressed="false">
+                  <span class="token-art">
+                    <svg viewBox="0 0 80 80" aria-hidden="true">
+                      <ellipse cx="40" cy="52" rx="20" ry="14" fill="#6aaa45"/>
+                      <circle cx="28" cy="36" r="11" fill="#6aaa45"/>
+                      <circle cx="52" cy="36" r="11" fill="#6aaa45"/>
+                      <circle cx="28" cy="36" r="5" fill="#f4f7ef"/>
+                      <circle cx="52" cy="36" r="5" fill="#f4f7ef"/>
+                      <circle cx="29" cy="37" r="2.3" fill="#241c16"/>
+                      <circle cx="53" cy="37" r="2.3" fill="#241c16"/>
+                      <path d="M34 56q6 5 12 0" fill="none" stroke="#241c16" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="token-copy"><span class="token-label">Лягушка</span><span class="token-state"></span></span>
+                </button>
+                <button type="button" class="token" data-role="animal" data-pair="bee" aria-pressed="false">
+                  <span class="token-art">
+                    <svg viewBox="0 0 80 80" aria-hidden="true">
+                      <ellipse cx="26" cy="42" rx="10" ry="6" fill="#f7f4ea"/>
+                      <ellipse cx="54" cy="42" rx="10" ry="6" fill="#f7f4ea"/>
+                      <ellipse cx="40" cy="48" rx="15" ry="18" fill="#f2c14e"/>
+                      <path d="M28 42h24M29 50h22M31 58h18" stroke="#241c16" stroke-width="3" stroke-linecap="round"/>
+                      <circle cx="40" cy="30" r="8" fill="#f2c14e"/>
+                      <circle cx="37" cy="29" r="1.4" fill="#241c16"/>
+                      <circle cx="43" cy="29" r="1.4" fill="#241c16"/>
+                    </svg>
+                  </span>
+                  <span class="token-copy"><span class="token-label">Пчела</span><span class="token-state"></span></span>
+                </button>
+              </div>
+            </div>
+            <div>
+              <p class="column-label">Дома</p>
+              <div class="token-list" data-homes>
+                <button type="button" class="token" data-role="home" data-pair="bee">
+                  <span class="token-art">
+                    <svg viewBox="0 0 80 80" aria-hidden="true">
+                      <path d="M40 14 52 22v10L40 40 28 32V22Z" fill="#f0b429"/>
+                      <path d="M40 32 52 40v10L40 58 28 50V40Z" fill="#e2a31a"/>
+                      <path d="M28 24 16 32v10l12 8V34Z" fill="#f6d36b"/>
+                      <path d="M52 24l12 8v10l-12 8V34Z" fill="#d89a16"/>
+                      <rect x="36" y="48" width="8" height="12" rx="1" fill="#6a4a22"/>
+                    </svg>
+                  </span>
+                  <span class="token-copy"><span class="token-label">Улей</span><span class="token-state"></span></span>
+                </button>
+                <button type="button" class="token" data-role="home" data-pair="frog">
+                  <span class="token-art">
+                    <svg viewBox="0 0 80 80" aria-hidden="true">
+                      <ellipse cx="40" cy="50" rx="26" ry="12" fill="#7eb8d4"/>
+                      <path d="M18 48c6-10 12-8 16 0" fill="none" stroke="#3d8ea6" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M46 46c5-9 12-7 16 2" fill="none" stroke="#2f6b4f" stroke-width="3" stroke-linecap="round"/>
+                      <ellipse cx="40" cy="54" rx="16" ry="5" fill="#d5eef6" opacity="0.7"/>
+                    </svg>
+                  </span>
+                  <span class="token-copy"><span class="token-label">Пруд</span><span class="token-state"></span></span>
+                </button>
+                <button type="button" class="token" data-role="home" data-pair="fox">
+                  <span class="token-art">
+                    <svg viewBox="0 0 80 80" aria-hidden="true">
+                      <path d="M12 52c8-18 18-26 28-26s20 8 28 26v8H12Z" fill="#8d5a3c"/>
+                      <ellipse cx="40" cy="50" rx="10" ry="8" fill="#2a211c"/>
+                      <path d="M14 58h52v6H14Z" fill="#6e8f55"/>
+                    </svg>
+                  </span>
+                  <span class="token-copy"><span class="token-label">Нора</span><span class="token-state"></span></span>
+                </button>
+                <button type="button" class="token" data-role="home" data-pair="bird">
+                  <span class="token-art">
+                    <svg viewBox="0 0 80 80" aria-hidden="true">
+                      <path d="M18 46c6 4 10 14 14 16 2-8 6-16 8-20 4 6 8 14 10 20 4-2 8-12 14-16-6-2-10-8-12-14-4 4-10 6-14 6s-10-2-14-6c-2 6-6 12-12 14Z" fill="#c46b4a"/>
+                      <ellipse cx="40" cy="40" rx="8" ry="5" fill="#f0b429"/>
+                    </svg>
+                  </span>
+                  <span class="token-copy"><span class="token-label">Гнездо</span><span class="token-state"></span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="board-reset" id="puzzle-reset" hidden>Сыграть ещё раз</button>
+          <noscript><p>Сопоставление работает при включённом JavaScript.</p></noscript>
         </div>
+      </div>
+    </section>
 
-        <div class="cat"></div>
-        <div class="bottom-txt">Печалька, с курой закончился.</div>
-</li>
+    <section class="section" id="game">
+      <div class="wrap">
+        <article class="game-card">
+          <div class="game-card-visual">
+            <p class="eyebrow">Google Play</p>
+            <h2>Animal Homes Puzzle</h2>
+            <p>Головоломка, в которой животные ищут свой дом. Короткие уровни для спокойной игры.</p>
+            <div class="sticker">Puzzle</div>
+          </div>
+          <div class="game-card-body">
+            <p>Полная версия готовится к публикации в Google Play. На этой странице можно пройти ту же идею в миниатюре: лиса ищет нору, птица — гнездо, лягушка — пруд, пчела — улей.</p>
+            <ul class="facts">
+              <li>
+                <span class="fact-index">01</span>
+                <div><strong>Без аккаунта</strong><span>Игра не просит имя, почту или номер телефона.</span></div>
+              </li>
+              <li>
+                <span class="fact-index">02</span>
+                <div><strong>Прогресс на устройстве</strong><span>Состояние игры остаётся в памяти телефона, а не в отдельном профиле.</span></div>
+              </li>
+              <li>
+                <span class="fact-index">03</span>
+                <div><strong>Политика для консоли</strong><span>Текст на английском уже опубликован и подходит для поля Privacy policy.</span></div>
+              </li>
+            </ul>
+            <p><a class="text-link" href="privacy-policy.html">Открыть Privacy Policy</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-</ul>
+    <section class="section" id="work">
+      <div class="wrap">
+        <h2>Чем я занимаюсь</h2>
+        <p class="section-intro">Собираю игры и приложения целиком: от первого экрана до страницы, которую просит магазин.</p>
+        <div class="card-grid">
+          <article class="work-card">
+            <span>01</span>
+            <h3>Мобильные игры</h3>
+            <p>Головоломки и короткие казуальные игры для Android, в которые можно зайти на пару минут.</p>
+          </article>
+          <article class="work-card">
+            <span>02</span>
+            <h3>Приложения</h3>
+            <p>Небольшие Android-приложения с понятным сценарием и аккуратным интерфейсом.</p>
+          </article>
+          <article class="work-card">
+            <span>03</span>
+            <h3>Публикация</h3>
+            <p>Карточка Google Play, контакт и политика конфиденциальности, которую можно вставить в консоль.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <section class="section" id="about">
+      <div class="wrap about-panel">
+        <div>
+          <p class="eyebrow">Обо мне</p>
+          <h2>Shohrat</h2>
+          <p>Я выпускаю проекты под своим именем и веду их до магазина сам. Для Animal Homes Puzzle подготовил эту страницу и отдельную политику конфиденциальности на английском языке.</p>
+          <p>Если вы пишете про ошибку в игре, данные или карточку в Google Play Console, письмо попадёт мне напрямую.</p>
+        </div>
+        <aside class="mail-card">
+          <p class="eyebrow">Почта</p>
+          <a href="mailto:shohrat84@gmail.com">shohrat84@gmail.com</a>
+          <p>Отвечаю лично, без отдельной службы поддержки.</p>
+        </aside>
+      </div>
+    </section>
 
-</div>
-    </body>
-    </html>
+    <section class="section" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="eyebrow">Контакт</p>
+          <h2>Написать по игре</h2>
+          <p class="section-intro">Подойдёт и короткий вопрос по публикации, и сообщение о том, что уровень ведёт себя не так.</p>
+          <a class="button button-primary" href="mailto:shohrat84@gmail.com">shohrat84@gmail.com</a>
+        </div>
+        <div class="policy-box">
+          <h3>Ссылка для Google Play Console</h3>
+          <p>Вставьте этот адрес в поле Privacy policy. Страница на английском и описывает Animal Homes Puzzle.</p>
+          <div class="url-row">
+            <input id="policy-url" type="text" readonly value="https://shohrat.github.io/privacy-policy.html" aria-label="Адрес политики конфиденциальности">
+            <button class="button button-primary" type="button" data-copy="https://shohrat.github.io/privacy-policy.html">Копировать</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© 2026 Shohrat</p>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+  </footer>
+  <script src="js/custom.js"></script>
+</body>
+</html>
