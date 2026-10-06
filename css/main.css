@@ -71,7 +71,8 @@ input {
 .skip-link {
   position: absolute;
   left: 12px;
-  top: -40px;
+  top: 12px;
+  transform: translateY(-150%);
   background: var(--ink);
   color: white;
   padding: 8px 12px;
@@ -79,7 +80,7 @@ input {
 }
 
 .skip-link:focus {
-  top: 12px;
+  transform: none;
 }
 
 :focus-visible {
@@ -660,8 +661,17 @@ input {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 22px;
-  padding: 8px 22px 18px;
+  padding: 12px 22px 18px 2rem;
   margin: 18px 0 8px;
+}
+
+.policy ul,
+.policy ol {
+  padding-left: 1.25rem;
+}
+
+.policy .summary {
+  padding-left: 2rem;
 }
 
 .summary li,
